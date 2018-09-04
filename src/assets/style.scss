@@ -1,0 +1,2142 @@
+@import "_rem.scss";
+html {
+  background-color: #f5f5f5;
+  font-family: PingFangSC-Regular, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+input {
+  border: none;
+}
+
+//主题色
+$themeColor: #fa711b;
+//主题字体颜色
+$fontColor: #fa711b;
+//边框线
+$borderLine: 1px solid #e5e5e5;
+//另一种主题色
+$themeColors: #ff883e;
+//定义常用 flex mixin 兼容
+@mixin flex {
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+}
+
+@mixin justifyContent($layout) {
+  -webkit-justify-content: $layout;
+  -moz-justify-content: $layout;
+  -ms-justify-content: $layout;
+  -o-justify-content: $layout;
+  -khtml-justify-content: $layout;
+  justify-content: $layout;
+}
+
+@mixin alignItems($layout) {
+  -webkit-align-items: $layout;
+  -moz-align-items: $layout;
+  -ms-align-items: $layout;
+  -o-align-items: $layout;
+  -khtml-align-items: $layout;
+  align-items: $layout;
+}
+
+@mixin direction($layout) {
+  -webkit-flex-direction: $layout;
+  -moz-flex-direction: $layout;
+  -ms-flex-direction: $layout;
+  -o-flex-direction: $layout;
+  -khtml-flex-direction: $layout;
+  flex-direction: $layout;
+}
+
+@mixin wrap($layout) {
+  -webkit-flex-wrap: $layout;
+  -moz-flex-wrap: $layout;
+  -ms-flex-wrap: $layout;
+  -o-flex-wrap: $layout;
+  -khtml-flex-wrap: $layout;
+  flex-wrap: $layout;
+}
+
+@mixin alignContent($layout) {
+  -webkit-align-content: $layout;
+  -moz-align-content: $layout;
+  -ms-align-content: $layout;
+  -o-align-content: $layout;
+  -khtml-align-content: $layout;
+  align-content: $layout;
+}
+
+//组合flex
+@mixin flexCenter {
+  @include flex;
+  @include justifyContent(center);
+  @include alignItems(center);
+}
+
+@mixin flexSpaceBetween {
+  @include flex;
+  @include justifyContent(space-between);
+  @include alignItems(center);
+}
+
+@mixin flexSpaceAround {
+  @include flex;
+  @include justifyContent(space-around);
+  @include alignItems(center);
+}
+
+//超出字数后显示省略号
+@mixin ell($num) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $num;
+  overflow: hidden;
+}
+
+#home {
+  .top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    background-color: #ffffff;
+    width: 100%;
+    font-size: 0.48rem;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+    z-index: 99;
+    .left {
+      position: absolute;
+      top: 0rem;
+      left: 0.4rem;
+      span {
+        font-size: 0.32rem;
+      }
+    }
+    .center {
+      font-size: 0.48rem;
+    }
+    .right {
+      position: absolute;
+      top: 0rem;
+      right: 0.4rem;
+      font-size: 20px;
+    }
+  }
+  .tops {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    background-color: #ffffff;
+    width: 100%;
+    font-size: 0.48rem;
+    border-bottom: $borderLine;
+    text-align: center;
+    z-index: 99;
+    i {
+      font-size: 20px;
+      position: absolute;
+      top: 0;
+      left: 0.4rem;
+    }
+    span {
+    }
+    .rights {
+      font-size: 20px;
+      position: absolute;
+      top: 0;
+      right: 0.4rem;
+      font-size: 0.32rem;
+    }
+  }
+  .homeCenter {
+    margin-bottom: 1.4rem;
+    padding-top: 1.2rem;
+    background-color: #ffffff;
+    .swipes {
+      width: 100%;
+      height: 4.8rem;
+    }
+    .topNav {
+      background-color: #ffffff;
+      padding: 0.52rem;
+      @include flexSpaceBetween;
+      border-bottom: $borderLine;
+      .topNavs {
+        text-align: center;
+        @include direction(column);
+        @include flex();
+        img {
+          width: 1rem;
+          margin-bottom: 0.2rem;
+        }
+        span {
+          font-size: 0.346666rem;
+        }
+      }
+    }
+    .activity {
+      padding: 0.4rem;
+      background-color: #ffffff;
+      border-bottom: $borderLine;
+      @include flexSpaceBetween;
+      i {
+        font-size: 24px;
+        color: $themeColor;
+      }
+      span {
+        font-size: 0.32rem;
+        margin-left: 0.2rem;
+        color: #333333;
+      }
+    }
+    .recommend {
+      padding: 0.2rem 0.4rem;
+      background-color: #ffffff;
+      border-bottom: $borderLine;
+      margin-top: 0.28rem;
+      @include flex;
+      @include alignItems(center);
+      i {
+        font-size: 30px;
+        color: $themeColor;
+      }
+      span {
+        font-size: 0.34666rem;
+        margin-left: 0.15rem;
+      }
+    }
+    .contents {
+      background-color: #ffffff;
+      border-bottom: $borderLine;
+      .content {
+        margin: 0.2rem 0;
+        border-bottom: $borderLine;
+        .images {
+          position: relative;
+          top: 0;
+          left: 0;
+          margin-bottom: 0.2rem;
+          img {
+            width: 100%;
+            height: 4.8rem;
+          }
+          span {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 0 0.2rem;
+            height: 0.8rem;
+            background-color: $themeColor;
+            color: #ffffff;
+            line-height: 0.8rem;
+            text-align: center;
+            font-size: 0.29333rem;
+            border-bottom-left-radius: 0.2rem;
+          }
+        }
+        .title {
+          font-size: 0.4rem;
+          padding: 0 0.4rem;
+        }
+        .tags {
+          @include flex;
+          @include wrap(wrap);
+          padding: 0.4rem;
+          border-bottom: $borderLine;
+          .tag {
+            border: 1px solid $themeColor;
+            color: $themeColor;
+            padding: 0.1rem 0.16rem;
+            border-radius: 0.1rem;
+            margin-right: 0.2rem;
+          }
+        }
+      }
+      .activitiesTime {
+        font-size: 0.34666rem;
+        padding: 0.4rem;
+        span {
+          color: $fontColor;
+        }
+      }
+      .operation {
+        @include flex;
+
+        @include alignItems(center);
+        padding: 0.4rem 0;
+        font-size: 0.34666rem;
+        border-top: $borderLine;
+        div {
+          width: 15%;
+          text-align: center;
+        }
+        i {
+          color: $themeColors;
+          margin-right: 0.12rem;
+        }
+        .browse {
+          border-right: $borderLine;
+        }
+        .good {
+          border-right: $borderLine;
+        }
+        .share {
+          border-right: $borderLine;
+        }
+      }
+    }
+    .activitiesContent {
+      background-color: #ffffff;
+      padding-left: 0.4rem;
+      font-size: 0.34666rem;
+      color: #333333;
+      border-bottom: $borderLine;
+      margin-bottom: 0.2rem;
+      .activitiesIntroduce {
+        font-size: 0.4rem;
+        padding: 0.4rem 0;
+        border-bottom: $borderLine;
+        i {
+          border-right: 2px solid $themeColors;
+          margin-left: 0.1rem;
+          height: 0.5rem;
+          -webkit-border-radius: 2rem;
+          -moz-border-radius: 2rem;
+          border-radius: 2rem;
+        }
+      }
+      .contentIntroduce {
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        color: #666666;
+        border-bottom: $borderLine;
+      }
+      .contact {
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        .rows {
+          color: #333333;
+          padding: 0.05rem 0;
+          @include flex;
+          @include alignItems(baseline);
+          div:first-child {
+            color: #666666;
+            @include flex;
+            @include alignItems(baseline);
+          }
+          span {
+            color: #333333;
+          }
+          i {
+            background-color: $themeColors;
+            padding: 0.1rem 0.32rem;
+            border-radius: 0.4rem;
+            color: #ffffff;
+          }
+          b {
+            width: 4.5rem;
+            color: #333333;
+          }
+          .iconfont {
+            color: #666666;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+    .service {
+      background-color: #ffffff;
+      padding-left: 0.4rem;
+      font-size: 0.34666rem;
+      color: #333333;
+      border-bottom: $borderLine;
+      .serviceIntroduce {
+        font-size: 0.4rem;
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        border-bottom: $borderLine;
+        i {
+          border-right: 2px solid $themeColors;
+          margin-left: 0.1rem;
+          -webkit-border-radius: 2rem;
+          -moz-border-radius: 2rem;
+          border-radius: 2rem;
+          height: 0.5rem;
+        }
+      }
+      .serviceContent {
+        @include flex;
+        @include alignItems(flex-start);
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        font-size: 0.34666rem;
+        color: #666666;
+        border-bottom: $borderLine;
+        img {
+          width: 2.16rem;
+          height: 2.16rem;
+          border-radius: 0.1rem;
+          margin-right: 0.28rem;
+        }
+        .serviceName {
+          font-size: 0.3733rem;
+          color: #333333;
+          margin-bottom: 0.28rem;
+          font-weight: 600;
+        }
+      }
+      .list {
+        .listName {
+          font-weight: 600;
+          padding: 0.4rem 0.4rem 0.4rem 0;
+          font-size: 0.34666rem;
+          border-bottom: $borderLine;
+        }
+        .lists {
+          padding: 0.4rem 0.4rem 0.4rem 0;
+          .listContent {
+            @include flex;
+            @include alignItems(center);
+            margin-bottom: 0.2rem;
+            div:first-child {
+              background-color: $themeColors;
+              color: #ffffff;
+              width: 0.5rem;
+              height: 0.5rem;
+              border-radius: 0.5rem;
+              @include flex;
+              @include justifyContent(center);
+              @include alignItems(center);
+              margin-right: 0.2rem;
+            }
+            span {
+              font-size: 0.32rem;
+            }
+          }
+        }
+      }
+    }
+    .activiteisMap {
+      padding: 0.4rem;
+      background-color: #ffffff;
+      font-size: 0.32rem;
+      color: #666666;
+      border-bottom: $borderLine;
+
+      b {
+        color: #333333;
+      }
+    }
+    .comment {
+      background-color: #ffffff;
+      padding-left: 0.4rem;
+      font-size: 0.34666rem;
+      color: #333333;
+      border-bottom: $borderLine;
+      .commentName {
+        font-size: 0.4rem;
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        border-bottom: $borderLine;
+        i {
+          border-right: 2px solid $themeColors;
+          margin-left: 0.1rem;
+          -webkit-border-radius: 2rem;
+          -moz-border-radius: 2rem;
+          border-radius: 2rem;
+          height: 0.5rem;
+        }
+      }
+      .comments {
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        border-bottom: $borderLine;
+        .commentContent {
+          @include flex;
+          @include justifyContent(space-between);
+          @include alignItems(center);
+          img {
+            width: 0.92rem;
+            height: 0.92rem;
+            border-radius: 50%;
+          }
+          .commentUser {
+            @include flex;
+            @include justifyContent(space-between);
+            @include alignItems(center);
+            width: 100%;
+            margin-left: 0.2rem;
+            color: #666666;
+            span {
+            }
+          }
+        }
+        .commentText {
+          margin-left: 1.12rem;
+          font-size: 0.37333rem;
+          font-weight: 600;
+          color: #333333;
+        }
+      }
+    }
+    .search {
+      padding: 0.4rem;
+      background-color: #f7f7f7;
+      @include flex;
+      @include alignItems(center);
+      font-size: 0.34666rem;
+      border-bottom: $borderLine;
+      color: #666666;
+      .searchText {
+        height: 1rem;
+        width: 81.2%;
+        border: 1px solid #aeaeae;
+        border-radius: 0.5rem;
+        background-color: #fbfbfb;
+        line-height: 1rem;
+        i {
+          margin-right: 0.1rem;
+        }
+      }
+      span {
+        margin-left: 0.44rem;
+      }
+    }
+    .datePick {
+      @include flex;
+      @include justifyContent(space-between);
+      @include alignItems(center);
+      padding: 0.4rem;
+      background-color: #ffffff;
+      border-bottom: $borderLine;
+      .timeNum {
+        font-size: 0.4rem;
+        span {
+          color: $themeColor;
+          font-size: 0.2666rem;
+        }
+      }
+      .icon-date {
+        color: #bfbfbf;
+      }
+      i {
+        font-size: 10px;
+      }
+    }
+    .venue {
+      padding: 0.4rem;
+      background-color: #ffffff;
+      border-bottom: $borderLine;
+      div:first-child {
+        font-size: 0.4rem;
+        color: #333333;
+      }
+    }
+    .enrollText {
+      padding: 0.4rem;
+      background-color: #ffffff;
+      @include flex;
+      @include justifyContent(space-between);
+      @include alignItems(center);
+      font-size: 0.4rem;
+      border-bottom: $borderLine;
+      i {
+        border: 1px solid $themeColors;
+        margin-left: 0.1rem;
+        height: 0.4rem;
+      }
+    }
+    .enrolltxt {
+      padding: 0.4rem;
+      background-color: #ffffff;
+      border-bottom: $borderLine;
+      margin-bottom: 0.2rem;
+      .enrollContents {
+        border: $borderLine;
+        border-radius: 0.2rem;
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}
+
+#nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #999999;
+  padding-bottom: 0.12rem;
+  //padding-top: 0.28rem;
+  background-color: #ffffff;
+  border-top: 1px solid #d8dee5;
+  @include flexSpaceAround;
+  .nav {
+    i {
+      font-size: 20px;
+    }
+    @include flex;
+    text-align: center;
+    @include direction(column);
+  }
+  .router-link-active {
+    color: $themeColor;
+  }
+}
+
+.voteInfo {
+  width: 33.33%;
+  text-align: center;
+}
+
+.voteBtn {
+  background-color: $fontColor;
+  color: #ffffff;
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+#users {
+  .top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    text-align: center;
+    background-color: #ffffff;
+    width: 100%;
+    font-size: 0.48rem;
+    border-bottom: $borderLine;
+  }
+  .center {
+    padding-top: 1.2rem;
+    margin-bottom: 1.4rem;
+    .banner {
+      @include flexCenter;
+      @include direction(column);
+      .avatar {
+        padding-bottom: 0.4rem;
+        img {
+          width: 1.68rem;
+          height: 1.68rem;
+          border-radius: 50%;
+          margin: 0 auto;
+          border: 0.12rem solid #727271;
+        }
+      }
+      .nick {
+        font-size: 0.4rem;
+        color: #ffffff;
+        margin: 0 auto;
+        margin-bottom: 0.28rem;
+        text-align: center;
+      }
+      .integral {
+        padding: 0.12rem 0.24rem;
+        background-color: $fontColor;
+        color: #ffffff;
+        margin: 0 auto;
+        text-align: center;
+        border-radius: 0.5rem;
+        @include flexCenter;
+      }
+    }
+    .cells {
+      padding-left: 0.4rem;
+      background-color: #ffffff;
+      .cell {
+        @include flexSpaceBetween;
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        background-color: #ffffff;
+        border-bottom: 1px solid #e6e6e6;
+        i {
+          color: #bfbfbf;
+          font-size: 20px;
+        }
+        span {
+          font-size: 0.4rem;
+          color: #333333;
+          margin-left: 0.2rem;
+        }
+      }
+    }
+  }
+}
+
+//包含消息，收藏等页面样式
+#news {
+  .leftTop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    background-color: #ffffff;
+    width: 100%;
+    font-size: 0.48rem;
+    border-bottom: $borderLine;
+    text-align: center;
+    z-index: 99;
+    i {
+      font-size: 20px;
+      position: absolute;
+      top: 0;
+      left: 0.4rem;
+    }
+    .right {
+      position: absolute;
+      top: 0;
+      right: 0.4rem;
+      font-size: 0.34666rem;
+    }
+    span {
+    }
+  }
+  .center {
+    padding-top: 1.2rem;
+    //background-color: #ffffff;
+    .news {
+      padding-left: 0.4rem;
+      border-bottom: $borderLine;
+      margin-bottom: 0.28rem;
+      background-color: #ffffff;
+      .new {
+        @include flexSpaceBetween;
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        border-bottom: $borderLine;
+        .title {
+          font-size: 0.4rem;
+        }
+        i {
+          color: $fontColor;
+        }
+      }
+      .content {
+        padding: 0.4rem 0.4rem 0.4rem 0;
+        font-size: 0.34666rem;
+        text-indent: 0.8rem;
+        letter-spacing: 0.05rem;
+      }
+      .time {
+        text-align: right;
+        padding-right: 0.4rem;
+        padding-bottom: 0.4rem;
+        color: #666666;
+      }
+    }
+    .titles {
+      text-align: center;
+      height: 1.2rem;
+      line-height: 1.2rem;
+      border-bottom: $borderLine;
+      font-size: 0.36rem;
+    }
+    .txt {
+      padding: 0.4rem;
+      border-bottom: $borderLine;
+      font-size: 0.32rem;
+    }
+    .collections {
+      padding: 0.4rem;
+      border-bottom: $borderLine;
+      background-color: #ffffff;
+      .collection {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 0.4rem;
+        img {
+          width: 100%;
+          height: 4.8rem;
+          border-radius: 0.2rem;
+        }
+        .collectionTime {
+          position: absolute;
+          top: 0.26rem;
+          left: 0.2rem;
+          i {
+            color: $fontColor;
+          }
+          span {
+            color: #ffffff;
+          }
+        }
+      }
+    }
+    .enroll {
+      background-color: #ffffff;
+      .enrollTop {
+        padding: 0.4rem;
+        @include flexSpaceBetween;
+        color: #707070;
+        border-bottom: $borderLine;
+        span {
+          color: $fontColor;
+        }
+      }
+      .enrollContent {
+        padding: 0.56rem 0.4rem;
+        border-bottom: $borderLine;
+        margin-bottom: 0.26rem;
+        .enrollInfo {
+          @include flex;
+          @include alignItems(flex-end);
+          img {
+            width: 2.4rem;
+            height: 2.4rem;
+            border-radius: 0.2rem;
+            margin-right: 0.26rem;
+          }
+          .enrollTxt {
+            font-size: 0.32rem;
+            color: #999999;
+            //height: 2.6rem;
+            width: 75%;
+            @include flex;
+            @include direction(column);
+            @include alignContent(space-between);
+            .enrollTxtTitle {
+              font-size: 0.4rem;
+              color: #333333;
+            }
+          }
+        }
+        .enrollBottom {
+          width: 100%;
+          @include flexSpaceBetween;
+          //margin-top: 0.4rem;
+          .enrollIcon {
+            i {
+              color: #666666;
+              margin: 0 0.15rem;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+    .cell {
+      @include flexSpaceBetween;
+      padding: 0.4rem 0.4rem 0.4rem 0;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e6e6e6;
+      i {
+        color: #bfbfbf;
+        font-size: 20px;
+      }
+      span {
+        font-size: 0.4rem;
+        color: #333333;
+        margin-left: 0.2rem;
+      }
+    }
+    .integralBg {
+      text-align: center;
+      padding-top: 1.68rem;
+    }
+    .integralRule {
+      text-align: right;
+      margin-top: 1.2rem;
+      margin-right: 0.4rem;
+      font-size: 0.4rem;
+      @include flex;
+      @include justifyContent(flex-end);
+      i {
+        font-size: 20px;
+        margin-right: 0.1rem;
+      }
+    }
+    .integralText{
+      line-height:0.86rem;
+    }
+    .integralDetails {
+      padding: 0.4rem;
+      background-color: #f5f5f5;
+      .integralInfoTitle {
+        @include flex;
+        text-align: center;
+        width: 100%;
+        border: $borderLine;
+        padding: 0.4rem;
+        background-color: #ffffff;
+        font-size: 0.34666rem;
+        font-weight: 500;
+        color: #333333;
+      }
+      .integralInfo {
+        border-bottom: $borderLine;
+        border-left: $borderLine;
+        border-right: $borderLine;
+        background-color: #fff;
+        padding: 0.4rem 0.4rem 0 0.4rem;
+        .integralInfos {
+          @include flex;
+          text-align: center;
+          width: 100%;
+          font-size: 0.32rem;
+          color: #333333;
+          margin-bottom: 0.4rem;
+        }
+      }
+    }
+    .enrollCancle {
+      background-color: $fontColor;
+      color: #ffffff;
+      border-radius: 0.5rem;
+      padding: 0 0.4rem;
+      height: 0.8rem;
+      line-height: 0.8rem;
+    }
+    .appointmentBottom {
+      margin-top: 0.52rem;
+      padding-top: 0.4rem;
+      border-top: $borderLine;
+      font-size: 0.32rem;
+      p {
+        color: #333333;
+        margin-bottom: 0.26rem;
+      }
+      span {
+        color: #666666;
+      }
+    }
+    .tabNav {
+      position: fixed;
+      top: 1.2rem;
+      left: 0;
+      width: 100%;
+      z-index: 99;
+      background-color: #ffffff;
+      padding: 0.4rem;
+      border-bottom: $borderLine;
+      font-size: 0.32rem;
+      @include flex;
+      @include alignItems(center);
+      @include justifyContent(space-between);
+    }
+    .appointmentOrders {
+      padding-top: 1.2rem;
+      .appointmentOrder {
+        margin-bottom: 0.26rem;
+        padding: 0.4rem;
+        border-bottom: $borderLine;
+        font-size: 0.3466rem;
+        .left {
+          width: 25%;
+        }
+        .right {
+          width: 60%;
+        }
+        .rightStatus {
+          color: $fontColor;
+          width: 20%;
+          text-align: right;
+        }
+        div {
+          padding: 0.02rem 0;
+        }
+      }
+    }
+    .insideatBtn {
+      border: $borderLine;
+      padding: 0.1rem 0.3rem !important;
+      border-radius: 0.5rem;
+    }
+    .userInfoInput {
+      background-color: #ffffff;
+      padding: 0.28rem 0.4rem;
+      font-size: 0.4rem;
+      border-bottom: $borderLine;
+      @include flex;
+      @include alignItems(center);
+      .textName {
+        text-align: left;
+        width: 1.96rem;
+        border-right: $borderLine;
+      }
+      input {
+        margin-left: 0.4rem;
+      }
+    }
+    .editUserInfoBtn {
+      background-color: $themeColor;
+      color: #ffffff;
+      height: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      line-height: 1rem;
+      font-size: 0.4rem;
+    }
+    .userInfoInputs {
+      margin-left: 0.4rem;
+      padding: 0.28rem 0.4rem 0.28rem 0;
+      border-bottom: $borderLine;
+    }
+    .userInfos {
+      padding: 0.2rem 0.4rem;
+      border-bottom: $borderLine;
+      .userInfoList {
+        font-size: 0.34666rem;
+        margin: 0.2rem 0;
+        @include flex;
+        @include alignItems(center);
+        p {
+          width: 2rem;
+        }
+      }
+    }
+  }
+}
+
+.enrollTextCenter {
+  .userInfoInput {
+    padding: 0.28rem 0.4rem;
+    font-size: 0.4rem;
+    border-bottom: $borderLine;
+    @include flex;
+    @include alignItems(center);
+    .textName {
+      text-align: left;
+      width: 1.96rem;
+      border-right: $borderLine;
+    }
+    input {
+      margin-left: 0.4rem;
+    }
+    .getCode {
+      border: $borderLine;
+      font-size: 0.32rem;
+      border-radius: 0.5rem;
+      padding: 0.1rem 0.2rem;
+    }
+  }
+  .editUserInfoBtn {
+    background-color: $fontColor;
+    color: #ffffff;
+    height: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.4rem;
+  }
+}
+
+#login {
+  padding: 0 0.4rem;
+  position: relative;
+  .goBack {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    i {
+      font-size: 16px;
+      color: #ffffff;
+    }
+  }
+  .logo {
+    padding-top: 3rem;
+    img {
+      margin: 0 auto;
+      width: 1.8rem;
+      height: 1.48rem;
+    }
+  }
+  .logoInput {
+    margin-top: 3.2rem;
+    .textInput {
+      margin: 0 auto;
+      margin-bottom: 0.52rem;
+      border-bottom: 1px solid #cccccc;
+      color: #666666;
+      height: 1rem;
+      @include flex;
+      @include alignItems(center);
+      i {
+        text-align: center;
+        font-size: 25px;
+        margin-left: 0.3rem;
+        margin-right: 0.2rem;
+        line-height: 1rem;
+      }
+      input {
+        font-size: 0.37333rem;
+        color: #333333;
+        width: 5.8rem;
+      }
+      input::-moz-placeholder {
+        color: #666666;
+      }
+      input:-ms-input-placeholder {
+        color: #666666;
+      }
+      input::-webkit-input-placeholder {
+        color: #666666;
+      }
+    }
+  }
+  .loginTag {
+    color: #999999;
+    font-size: 12px;
+    letter-spacing: 0.02rem;
+  }
+  .forgotPwd {
+    text-align: right;
+    margin-top: 1rem;
+    color: #fff;
+    font-size: 0.32rem;
+  }
+  .login {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    background: $fontColor;
+    height: 1.08rem;
+    text-align: center;
+    line-height: 1.08rem;
+    font-size: 0.37333rem;
+    border-radius: 0.5rem;
+    color: #ffffff;
+  }
+  .loginReg {
+    height: 1.08rem;
+    text-align: center;
+    line-height: 1.08rem;
+    font-size: 0.32rem;
+    color: #ffffff;
+  }
+  .getCode {
+    padding: 0 0.2rem;
+    border-radius: 0.5rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.32rem;
+    position: absolute;
+    top: 0.075rem;
+    right: 0.1rem;
+    border: 1px solid $fontColor;
+    color: $fontColor;
+  }
+  .forgetPwd {
+    @include flex;
+    @include justifyContent(space-between);
+    @include alignItems(center);
+    span {
+      color: $fontColor;
+    }
+  }
+}
+
+#topTitles {
+
+}
+
+.selected {
+  margin-left: 0.4rem;
+}
+
+.cover {
+  padding: 0.4rem;
+  font-size: 0.4rem;
+  color: #666666;
+}
+
+.pickTime {
+  width: 2rem;
+  background-color: $fontColor;
+  color: #ffffff;
+  border-radius: 0.2rem;
+  text-align: center;
+  margin: 0.2rem 0.65rem;
+}
+
+.pickTimePop {
+  padding: 0.4rem 0;
+  @include flex;
+  @include wrap(wrap)
+}
+
+.voteTotal {
+  font-size: 0.2rem;
+  color: $fontColor;
+  margin-left: 0.1rem;
+}
+
+.coverImg {
+  @include flex;
+  @include justifyContent(center);
+  @include alignItems(center);
+  position: relative;
+  .reupload {
+    background-color: rgba(250, 113, 27, 0.4);
+    width: 2.68rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    border-radius: 0.2rem;
+    text-align: center;
+    color: #ffffff;
+    position: absolute;
+    top: 30%;
+    left: 35%;
+  }
+  .img {
+    width: 100%;
+  }
+}
+
+.textareaUp {
+  width: 100%;
+  margin-top: 0.2rem;
+  border: none;
+}
+
+.works {
+  padding: 0.2rem 0.4rem;
+  border-bottom: $borderLine;
+  font-size: 0.37333rem;
+  .uploadBtn {
+    background-color: $fontColor;
+    color: #ffffff;
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.coverInfo {
+  padding: 0.4rem;
+  font-size: 0.37333rem;
+  border-bottom: $borderLine;
+  .info {
+    font-size: 0.32rem;
+    color: #666666;
+  }
+}
+
+.myWork {
+  .myWorkInfo {
+    background-color: #ffffff;
+    padding-bottom: 0.4rem;
+    border-bottom: $borderLine;
+    .myWorks {
+      position: relative;
+      img {
+        height: 4.84rem;
+        width: 100%;
+      }
+      div:first-child {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(250, 113, 27, 0.4);
+        width: 100%;
+        text-align: right;
+        padding: 0.2rem 0.4rem;
+        color: #ffffff;
+        font-size: 0.34666rem;
+      }
+    }
+    .myWorkTit {
+      margin: 0.2rem 0 0.2rem 0.4rem;
+    }
+    .myWorkTag {
+      border: 1px solid $fontColor;
+      color: $fontColor;
+      padding: 0.1rem 0.2rem;
+      border-radius: 0.2rem;
+      margin: 0.4rem;
+    }
+  }
+
+}
+
+.codeImg {
+  height: 100%;
+  background-color: #000000;
+  @include flexCenter
+}
+
+.pickArea {
+  @include flex;
+  @include justifyContent(space-between);
+  @include alignItems(center);
+  background-color: #ffffff;
+  padding: 0.4rem 3rem;
+  font-size: 0.34666rem;
+  border-bottom: $borderLine;
+}
+
+.searchAuth {
+  border: $borderLine;
+  padding: 0 0.2rem;
+  border-radius: 0.5rem;
+  input {
+    width: 3rem;
+  }
+}
+
+.worksImg {
+  position: relative;
+  img {
+    width: 100%;
+    height: 4.8rem;
+  }
+  .worker {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(250, 113, 27, 0.4);
+    width: 100%;
+    color: #ffffff;
+    text-align: right;
+    padding: 0.1rem 0.4rem;
+  }
+}
+
+.worksInfo {
+  p {
+    margin-bottom: 0.2rem;
+  }
+  .worksTag {
+    border: 1px solid $fontColor;
+    color: $fontColor;
+    padding: 0.1rem 0.3rem;
+    border-radius: 0.1rem;
+  }
+  .flexBettwens {
+    i {
+      color: $fontColor;
+      margin-left: 0.4rem;
+    }
+  }
+}
+
+.topSearch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 0.4rem;
+}
+
+.pickSort {
+  border: $borderLine;
+  border-radius: 0.5rem;
+  padding: 0.1rem 0.2rem;
+}
+
+.vols {
+  background-color: #ffffff;
+  padding: 0.4rem;
+  margin-bottom: 0.2rem;
+  border-bottom: $borderLine;
+  img {
+    width: 2.4rem;
+    height: 2.8rem;
+
+  }
+  .pa {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2.4rem;
+    background-color: rgba(250, 113, 27, 0.4);
+    text-align: center;
+    color: #ffffff;
+  }
+  .typeBtn {
+    color: #ffffff;
+    background-color: $fontColor;
+    font-size: 0.2rem;
+    padding: 0.1rem 0.2rem;
+    border-radius: 0.1rem;
+  }
+  .iconfont {
+    color: $fontColor;
+  }
+  .rightSolt {
+
+  }
+}
+
+.listPhoto {
+  padding: 0.4rem 0.4rem 0 0.4rem;
+  background-color: #ffffff;
+  margin-top: 0.2rem;
+  @include flex;
+  @include justifyContent(space-around);
+  @include wrap(wrap);
+  img {
+    width: 4rem;
+    height: 4rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.teamPhoto {
+  padding: 0.4rem 0.4rem 0 0.4rem;
+  background-color: #ffffff;
+  margin-top: 0.2rem;
+  @include flex;
+  @include justifyContent(flex-start);
+  @include wrap(wrap);
+  .team {
+    text-align: center;
+    width: 2rem;
+    margin: 0.1rem 0.5rem;
+    img {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+    }
+  }
+}
+
+.yyTitle {
+  width: 25%;
+  text-align: center;
+  margin: 0.4rem 0;
+}
+
+.yyTilteZero {
+  width: 33%;
+  text-align: center;
+  margin: 0.4rem 0;
+}
+
+.yyColor {
+  color: $fontColor;
+}
+
+.msgPoint {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 0.2rem;
+  color: $fontColor;
+  background-color: $fontColor;
+}
+
+.rateBtn {
+  background-color: $fontColor;
+  color: #ffffff;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.5rem;
+  margin-right: 0.2rem;
+}
+
+.yyBtn {
+  background-color: #34e672;
+  color: #ffffff;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.5rem;
+}
+
+.orderInfo {
+  padding: 0.4rem;
+  background-color: #ffffff;
+  font-size: 0.34666rem;
+  margin-bottom: 0.2rem;
+  border-bottom: $borderLine;
+}
+
+.orderAddr {
+  @include flex;
+  @include alignItems(baseline);
+  padding: 0.4rem;
+  background-color: #ffffff;
+  border-bottom: $borderLine;
+  .orderAddrTit {
+    font-size: 0.4rem;
+    color: #666666;
+    margin-right: 0.4rem;
+  }
+  i {
+    color: $fontColor;
+    margin-left: 0.2rem;
+  }
+}
+
+.orderText {
+  padding: 0.4rem;
+  background-color: #ffffff;
+  border-bottom: $borderLine;
+  input {
+    font-size: 0.34666rem;
+    color: #333333;
+  }
+  input::-moz-placeholder {
+    color: #333333;
+  }
+  input:-ms-input-placeholder {
+    color: #333333;
+  }
+  input::-webkit-input-placeholder {
+    color: #333333;
+  }
+  .changeBtn {
+    border: 1px solid $fontColor;
+    color: $fontColor;
+    border-radius: 0.5rem;
+    padding: 0.1rem 0.25rem;
+  }
+  span {
+    width: 80%;
+  }
+  .mix {
+    padding: 0.1rem 0.25rem;
+    border: 1px solid #666666;
+    color: #666666;
+    margin-left: 0.2rem;
+    border-radius: 0.5rem;
+  }
+}
+
+.orderBtn {
+  margin: 0.4rem;
+  background-color: $fontColor;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  padding: 0.2rem 0;
+}
+
+.orderInput {
+  border: $borderLine;
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 0.1rem 0.2rem;
+  margin-top: 0.2rem;
+}
+
+.leftText {
+  width: 22%;
+  font-size: 0.4rem;
+  color: #666666;
+  margin-right: 0.4rem;
+}
+
+.orderSearchBtn {
+  margin: 0.8rem 1rem;
+  padding: 0.2rem 0;
+  background-color: $fontColor;
+  color: #fff;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+.overOrderTop {
+  background-color: #ffffff;
+  padding: 0.4rem;
+  border-bottom: $borderLine;
+  .overText {
+    width: 30%;
+  }
+  .overRight {
+    width: 70%;
+  }
+}
+
+.uploadOrder {
+  padding: 1.16rem;
+  border: $borderLine;
+}
+
+.rightPopBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 0.4rem;
+  .btn {
+
+  }
+}
+
+.areaList {
+  padding-top: 1.2rem;
+  padding-left: 0.4rem;
+  background-color: #ffffff;
+  .list {
+    border-bottom: $borderLine;
+    padding: 0.4rem 0.4rem 0.4rem 0;
+  }
+}
+
+.apply {
+  border-bottom: $borderLine;
+  padding: 0.4rem;
+  background-color: #ffffff;
+  font-size: 0.3466rem;
+  .orderApply {
+    padding: 0.05rem 0;
+    .text {
+      @include flex;
+      .leftText {
+        width: 22%;
+      }
+      .rightText {
+        width: 80%;
+      }
+    }
+  }
+}
+
+.applySubmit {
+  margin: 1rem;
+  padding: 0.2rem 0;
+  background-color: $fontColor;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+//复用样式
+.flexCenter {
+  @include flexCenter;
+}
+
+.flexBettwen {
+  @include justifyContent(space-between);
+}
+
+.flexBettwens {
+  @include flex;
+  @include justifyContent(space-between);
+  @include alignItems(center);
+}
+
+.flexBaseLine {
+  @include flex;
+  @include justifyContent(space-between);
+  @include alignItems(baseline);
+}
+
+.flexAround {
+  @include flexSpaceAround;
+}
+
+.flex {
+  @include flex;
+}
+
+.flexs {
+  @include flex;
+  @include alignItems(center);
+}
+
+.flexWarp {
+  @include wrap(wrap);
+}
+
+.flexBS {
+  @include flex;
+  @include justifyContent(space-between);
+  @include alignItems(start);
+}
+
+//swipe样式
+.mint-swipe-indicator.is-active {
+  background: $themeColor;
+  width: 0.72rem;
+  border-radius: 6px;
+  opacity: 1;
+}
+
+.mint-swipe-indicator {
+  width: 0.72rem;
+  height: 0.08rem;
+  background: #ffffff;
+  opacity: 0.5;
+  margin: 0 0.2rem;
+  border-radius: 6px;
+}
+
+//底部按钮
+.bottomBtn {
+  height: 1.16rem;
+  line-height: 1.16rem;
+  background-color: $themeColors;
+  color: #ffffff;
+  width: 100%;
+  text-align: center;
+  font-size: 0.3466rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+//过滤
+.filter {
+  position: relative;
+  z-index: 88;
+  padding: 0.2rem 0.4rem;
+  border-bottom: $borderLine;
+  background-color: #ffffff;
+  @include flex;
+  @include justifyContent(space-between);
+  @include alignItems(center);
+  .filters {
+    width: 2rem;
+    @include flexCenter;
+  }
+  .area {
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    width: 100%;
+    background-color: rgba(245, 245, 245, 1);
+    max-height: 10rem;
+    overflow: auto;
+    font-size: 0.4rem;
+    .areaName {
+      border-bottom: $borderLine;
+      padding: 0.2rem;
+    }
+  }
+}
+
+.acAmap {
+  width: 100%;
+  height: 5rem;
+}
+
+.typeInput {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 0.4rem;
+  border-bottom: $borderLine;
+  font-size: 0.4rem;
+}
+
+.typeInputs {
+  width: 70%;
+  padding: 0.4rem;
+  font-size: 0.4rem;
+}
+
+.typeCode {
+  border: 1px solid $fontColor;
+  color: $fontColor;
+  margin-right: 0.4rem;
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.1rem;
+}
+
+.typeCodeBtn {
+  background-color: $fontColor;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  margin: 7rem 0.5rem 0 0.5rem;
+}
+
+.typePop {
+  margin-top: 2rem;
+}
+
+.typeList {
+  padding-left: 0.4rem;
+  background-color: #ffffff;
+  border-bottom: $borderLine;
+  .title {
+    padding: 0.4rem 0;
+    font-size: 0.4rem;
+    border-bottom: $borderLine;
+  }
+  .list {
+    padding: 0.4rem 0.4rem 0.4rem 0;
+    .flexBase {
+      @include flex;
+      @include alignItems(baseLine);
+      padding: 0.1rem 0;
+      .left {
+        width: 25%;
+        font-size: 0.34666rem;
+        color: #666666;
+      }
+      .right {
+        width: 75%;
+        font-size: 0.34666rem;
+      }
+    }
+  }
+}
+
+.okBtn {
+  background-color: $fontColor;
+  color: #ffffff;
+  font-size: 0.4rem;
+  margin: 1rem 0.5rem;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.typeBack {
+  background-color: $fontColor;
+  color: #ffffff;
+  padding: 0.3rem;
+  font-size: 0.34666rem;
+  margin: 2rem;
+  text-align: center;
+  border-radius: 0.5rem;
+}
+
+.first:nth-child(1) {
+  margin-top: 0;
+}
+
+.Accontent {
+  margin-top: 0rem;
+  border-bottom: $borderLine;
+  background-color: #ffffff;
+  .images {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 0.4rem;
+    img {
+      width: 100%;
+      height: 4.8rem;
+    }
+    span {
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 0 0.2rem;
+      height: 0.8rem;
+      background-color: $themeColor;
+      color: #ffffff;
+      line-height: 0.8rem;
+      text-align: center;
+      font-size: 0.29333rem;
+      border-bottom-left-radius: 0.2rem;
+    }
+  }
+  .title {
+    font-size: 0.45rem;
+    padding: 0 0.4rem;
+    @include flex;
+    @include alignItems(center);
+    img {
+      margin-right: 0.2rem;
+    }
+  }
+  .tags {
+    //margin-top: 0.4rem;
+    @include flex;
+    @include wrap(wrap);
+    padding: 0.4rem;
+    border-bottom: $borderLine;
+    .tagShape {
+      border: 1px solid #17a8d8;
+      color: #17a8d8;
+      padding: 0.1rem 0.16rem;
+      border-radius: 0.1rem;
+      margin-right: 0.2rem;
+      margin-bottom: 0.2rem;
+    }
+    .tagType {
+      border: 1px solid #6dcc3a;
+      color: #6dcc3a;
+      padding: 0.1rem 0.16rem;
+      border-radius: 0.1rem;
+      margin-right: 0.2rem;
+      margin-bottom: 0.2rem;
+    }
+  }
+}
+
+.ell {
+  @include ell(1)
+}
+
+.mu-text-field {
+  width: 2.3rem;
+  margin-bottom: 0;
+  min-height: 0.3rem;
+}
+
+.mu-text-field-content {
+  padding-bottom: 0;
+}
+
+.mu-menu-destop .mu-menu-item {
+  padding: 0;
+  @include justifyContent(center);
+}
+
+.mu-menu-destop {
+  padding: 0;
+}
+
+.mu-text-field.focus-state {
+  color: #e5e5e5;
+}
+
+.mu-text-field-line {
+  background-color: #ffffff;
+}
+
+.mu-text-field-focus-line {
+  background-color: #ffffff;
+}
+
+//yd多选框样式
+.yd-checkbox-icon {
+  color: $fontColor !important;
+}
+
+//右侧弹窗高宽设置为100%
+.mint-popup-right {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+//设置弹窗高度
+.mint-toast {
+  z-index: 3000;
+}
+
+.mint-popup-bottom {
+  width: 100%;
+}
+
+.mint-popup {
+  width: 100%;
+}
+
+//弹出窗内的inpun样式
+.cancelRemark {
+  border-bottom: $borderLine;
+  width: 100%;
+}
+
+.mu-flat-button-primary {
+  color: $fontColor;
+}
+
+// 隐藏高德地图LOGO
+.amap-copyright {
+  display: none !important;
+}
+
+.amap-logo {
+  display: none !important;
+}
+
+.yd-popup-content {
+  background-color: #f5f5f5;
+}
+
+// 加载更多 loading颜色
+.mu-circle-spinner {
+  border-color: $fontColor !important;
+}
+
+.mu-dialog-body {
+  overflow: auto !important;
+  max-height: 5rem;
+  min-width: 7rem;
+}
+
+.mu-menu {
+  width: 5rem !important;
+}
+
+.mu-menu-list {
+  width: 5rem !important;
+}
+
+.menuColor {
+  .mu-menu-item-wrapper {
+    color: $fontColor !important;
+  }
+}
+
+.markText {
+  width: 100%;
+  border-top: $borderLine;
+  border-bottom: $borderLine;
+  border-right: none;
+  border-left: none;
+  font-size: 0.4rem;
+  padding: 0.4rem;
+}
+
+.uploadImg {
+  background-color: #ffffff;
+  padding: 0.4rem 0.1rem;
+  border-bottom: $borderLine;
+  @include wrap(wrap);
+  img {
+    width: 3rem;
+    height: 3rem;
+    margin: 0.1rem;
+  }
+  i {
+    position: absolute;
+    top: -0.2rem;
+    right: -0.1rem;
+    z-index: 99;
+  }
+
+}
+
+.clickMore {
+  text-align: center;
+  padding: 0.4rem;
+  font-size: 0.4rem;
+  background-color: #ffffff;
+}
+
+.pofixed {
+  position: fixed;
+  top: 1.2rem;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.picker-selected {
+  color: $fontColor !important;
+}
+
+.picker-center-highlight {
+  border-top: 1px solid $fontColor;
+  border-bottom: 1px solid $fontColor;
+}
+
+.fixed {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+// 特殊申请输入框样式
+.spInput {
+  input {
+    border: 1px solid #e5e5e5;
+    margin: 0.1rem 0;
+    padding: 0.1rem 0.2rem;
+    width: 6rem;
+    border-radius: 0.1rem;
+  }
+}
+
+.enrollState {
+  padding: 0.2rem;
+  background-color: $fontColor;
+  border-radius: 0.2rem;
+  color: #ffffff;
+}
+
+.calendarLi {
+  div:first-child {
+    padding: 0.3rem 0;
+    text-align: center;
+    margin-bottom: 0.2rem;
+  }
+}
+
+.calendarDay {
+  background-color: $fontColor;
+  color: #ffffff;
+  border: 1px solid $fontColor !important;
+}
+
+.shortDay {
+  text-align: center;
+  margin: 0 0.3rem 0.2rem 0.3rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  border: 1px solid #ffffff;
+}
+
+#ava {
+  width: 100%;
+  padding: 0.4rem;
+  border-bottom: $borderLine;
+}
+
+.getUpInfo {
+  padding: 0.1rem 0.2rem;
+  border-radius: 0.1rem;
+  background-color: $fontColor;
+  color: #ffffff;
+}
+.shareBg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  width: 100%;
+  .bg{
+    background-color: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 20rem;
+  }
+  img{
+    position: fixed;
+    top: 0;
+    right: 0.4rem;
+    z-index: 999999;
+    width: 8rem;
+  }
+}
+.flexAs{
+  -webkit-align-items: flex-start;
+  -moz-align-items: flex-start;
+  -ms-align-items: flex-start;
+  -o-align-items: flex-start;
+  -khtml-align-items: flex-start;
+  align-items: flex-start;
+}
+
+/***********************************************积分规则***************************************************/
+.center-table{
+  font-size:16px;
+  background-color: #ffffff;
+  margin:rem(20px) auto;
+  border:1px solid #d8dee5;
+}
+
+.center-table-th{
+  background-color: #f0f0f0;
+  font-weight: bold;
+  border-bottom: 1px solid #d8dee5;
+}
+
+.center-table-th td{
+  padding:rem(5px);
+  border-right: 1px solid #d8dee5;
+  min-width: rem(50px);
+}
+
+.center-table-tr{
+  border-bottom: 1px solid #d8dee5;
+}
+
+.center-table-tr td{
+  padding:rem(5px);
+  border-right: 1px solid #d8dee5;
+  min-width: rem(50px);
+}
+/*********************************************************************************************************/
+.area-list-return{
+  osition: fixed;
+  top:0;
+}
+.area-list{
+  padding-top:1.2rem;
+}
